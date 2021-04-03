@@ -1,0 +1,19 @@
+.forum_category_title {
+	font-size: 1.2em;
+	padding: 5px 0 0;
+	display: block;
+	font-weight: bold;
+	}
+
+.topic-count {
+	float: right;
+	}
+
+.bbp_forums_topic_count_widget_options a {
+	text-decoration: none;
+	}
+
+	.bbp_forums_topic_count_widget_options ul.children {
+		padding: 0 0 0 5px;
+		margin: 0;
+		}
