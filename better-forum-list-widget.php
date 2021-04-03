@@ -131,7 +131,7 @@ class Forum_List_Walker extends Walker {
 	 * @param	arr $args
 	 * @param	arr $page
 	 */
-	function start_el( &$output, $page, $depth, $args ) {
+	function start_el( &$output, $page, $depth, $args, $current_object_id ) {
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
 		extract( $args, EXTR_SKIP );
