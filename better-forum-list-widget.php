@@ -11,6 +11,7 @@ Author URI: http://www.bavotasan.com/
  * Register the widget
  */
 add_action(
+	'widgets_init',
 	function () {
 		register_widget( 'BBP_Forums_Topic_Count_Widget' );
 	}
@@ -36,8 +37,8 @@ class BBP_Forums_Topic_Count_Widget extends WP_Widget {
 	/**
 	 * Everything that we need to display the widget on the front end
 	 *
-	 * @param arr $args Arguments.
-	 * @param arr $instance Instance.
+	 * @param array $args     Arguments.
+	 * @param array $instance Instance.
 	 *
 	 * @uses    bbp_get_statistics()
 	 * @uses    wp_list_pages()
@@ -77,7 +78,7 @@ class BBP_Forums_Topic_Count_Widget extends WP_Widget {
 	/**
 	 * The widget admin options
 	 *
-	 * @param arr $instance Instance.
+	 * @param array $instance Instance.
 	 *
 	 * @uses    get_field_id()
 	 * @uses    get_field_name()
@@ -96,8 +97,8 @@ class BBP_Forums_Topic_Count_Widget extends WP_Widget {
 	/**
 	 * Validate the widget admin options
 	 *
-	 * @param arr $new_instance Old instance.
-	 * @param arr $old_instance New instance.
+	 * @param array $new_instance Old instance.
+	 * @param array $old_instance New instance.
 	 *
 	 * @retun array
 	 */
@@ -221,7 +222,7 @@ class Forum_List_Walker extends Walker { // phpcs:ignore
  *
  * @uses    bbp_get_forum_post_type()
  */
-function forum_list_widget_has_children( $page_id ) {
+function forum_list_widget_has_children( $page_id ): bool {
 	$children = get_pages(
 		array(
 			'child_of'  => $page_id,
