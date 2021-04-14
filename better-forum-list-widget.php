@@ -175,6 +175,7 @@ class Forum_List_Walker extends Walker { // phpcs:ignore
 		$has_children = forum_list_widget_has_children( $object->ID );
 
 		$current_page = get_the_ID();
+
 		if ( ! bbp_is_single_user() && $current_page ) {
 			$_current_page = get_post( $current_page );
 
@@ -196,8 +197,10 @@ class Forum_List_Walker extends Walker { // phpcs:ignore
 		}
 
 		$css_class   = implode( ' ', $css_class );
-		$topic_count = ( $has_children ) ? '' : '<span class="topic-count">' . intval( bbp_get_forum_topic_count( $object->ID ) ) . '</span>';
-		$forum_item  = ( $has_children ) ? '<span class="forum_category_title">' . apply_filters( 'the_title', $object->post_title, $object->ID ) . '</span>' . $topic_count : '<a href="' . get_permalink( $object->ID ) . '">' . apply_filters( 'the_title', $object->post_title, $object->ID ) . $topic_count . '</a>';
+		$topic_count = '<span class="topic-count">' . intval( bbp_get_forum_topic_count( $object->ID ) ) . '</span>';
+		$forum_item  = '<a href="' . get_permalink( $object->ID ) . '">' . apply_filters( 'the_title', $object->post_title, $object->ID ) . $topic_count . '</a>';
+		//$topic_count = ( $has_children ) ? '' : '<span class="topic-count">' . intval( bbp_get_forum_topic_count( $object->ID ) ) . '</span>';
+		//$forum_item  = ( $has_children ) ? '<span class="forum_category_title">' . apply_filters( 'the_title', $object->post_title, $object->ID ) . '</span>' . $topic_count : '<a href="' . get_permalink( $object->ID ) . '">' . apply_filters( 'the_title', $object->post_title, $object->ID ) . $topic_count . '</a>';
 
 		$output .= $indent . '<li class="' . $css_class . '">' . $forum_item;
 	}
